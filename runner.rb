@@ -104,6 +104,8 @@ class Game
   end 
 end 
 
+puts "Watching for potential upsets."
+
 while (1 < 2)
   this_scrape = ScoreScraper.new("http://www.ncaa.com/scoreboard/basketball-men/d1")
   this_scrape.scrape_scores
