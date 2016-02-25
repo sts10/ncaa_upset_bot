@@ -100,16 +100,11 @@ class Game
   end
 
   def announce
-    # if @team1_point > @team2_points
-    
-    # end
     text_to_tweet = "Potential upset:\n#{@team1_rank} #{@team1_name}: #{@team1_points}\n#{@team2_rank} #{@team2_name}: #{@team2_points}\nHalf: #{@half}#{", " + @time_left_in_half + " left" if @half != "Halftime"}\nMore: #{@live_url}"
     puts "Tweeting: #{text_to_tweet}"
     TWITTER_REST.update(text_to_tweet)
   end 
 end 
-
-binding.pry
 
 while (1 < 2)
   this_scrape = ScoreScraper.new("http://www.ncaa.com/scoreboard/basketball-men/d1")
