@@ -1,0 +1,16 @@
+# Upset Twitter Bot
+
+Attempts to tweet scores of Men's NCAA Basketball games in which the underdog is leading toward the end of the game. 
+
+## Setting It Up Yourself
+
+Clone this repo to your local machine, then create a `secrets.rb` file, with the following structure: 
+
+```ruby
+TWITTER_REST = Twitter::REST::Client.new do |config|
+  config.consumer_key = "<consumer key>"
+  config.consumer_secret = "<consumer secret>"
+  config.access_token = "<access token>"
+  config.access_token_secret = "<access token secret>"
+end
+```

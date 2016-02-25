@@ -69,9 +69,7 @@ class Game
 
     @team1_points = @game_noko.css("table.linescore td.final")[0].text
     @team2_points = @game_noko.css("table.linescore td.final")[1].text
-    # binding.pry
     @live_url = "http://www.ncaa.com/scoreboard/basketball-men/d1" # @game_noko.css('div.gamecenter-links a.watch-live').attribute('href')
-    # binding.pry
   end
 
   def second_half?
