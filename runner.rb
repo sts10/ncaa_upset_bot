@@ -55,13 +55,14 @@ class Game
     @team1_name = @game_noko.css("a")[0].text 
     @team2_name = @game_noko.css("a")[1].text 
 
-    if @game_noko.css("div.rank")[0] # .text
+    # binding.pry
+    if @game_noko.css("div.rank")[0] && @game_noko.css("div.rank")[0].text != "" # .text
       @team1_rank = @game_noko.css("div.rank")[0].text 
     else 
       @team1_rank = "100"
     end
 
-    if @game_noko.css("div.rank")[1] # .text
+    if @game_noko.css("div.rank")[1] && @game_noko.css("div.rank")[1].text != "" 
       @team2_rank = @game_noko.css("div.rank")[1].text 
     else
       @team2_rank = "100"
@@ -98,7 +99,7 @@ class Game
   end
 
   def announce
-    text_to_tweet = "Potential upset:\n#{@team1_rank} #{@team1_name}: #{@team1_points}\n#{@team2_rank} #{@team2_name}: #{@team2_points}\nHalf: #{@half}#{", " + @time_left_in_half + " left" if @half != "Halftime"}\nMore: #{@live_url}"
+    text_to_tweet = "Potential upset:\n#{@team1_rank if @team1_rank.to_i != 100} #{@team1_name}: #{@team1_points}\n#{@team2_rank if @team2_rank.to_i != 100} #{@team2_name}: #{@team2_points}\nHalf: #{@half}#{", " + @time_left_in_half + " left" if @half != "Halftime"}\nMore: #{@live_url}"
     puts "Tweeting: #{text_to_tweet}"
     TWITTER_REST.update(text_to_tweet)
   end 
