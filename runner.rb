@@ -89,9 +89,9 @@ class Game
   end
 
   def upset? 
-    if @team1_rank.to_i > @team2_rank.to_i && @team1_points.to_i > @team2_points.to_i && self.second_half? && self.less_than_minutes(8)
+    if @team1_rank.to_i > @team2_rank.to_i && (@team1_points.to_i + 4) > @team2_points.to_i && self.second_half? && self.less_than_minutes(8)
       return true
-    elsif @team2_rank.to_i > @team1_rank.to_i && @team2_points.to_i > @team1_points.to_i && self.second_half? && self.less_than_minutes(8)
+    elsif @team2_rank.to_i > @team1_rank.to_i && (@team2_points.to_i + 4) > @team1_points.to_i && self.second_half? && self.less_than_minutes(8)
       return true
     else
       return false
@@ -108,10 +108,14 @@ end
 puts "Watching for potential upsets."
 
 while (1 < 2)
+  begin
   this_scrape = ScoreScraper.new("http://www.ncaa.com/scoreboard/basketball-men/d1")
   this_scrape.scrape_scores
   this_scrape.announce_upsets
   sleep 120 
+  rescue
+    sleep 120
+  end
 end
 
 
