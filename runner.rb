@@ -114,6 +114,7 @@ while (1 < 2)
   this_scrape.announce_upsets
   sleep 120 
   rescue
+    puts "rescued!"
     sleep 120
   end
 end
